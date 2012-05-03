@@ -1,0 +1,10 @@
+{
+  "name": "Simple Timezone Converter",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Easily convert times between timezones.",
+  "browser_action": {
+    "default_icon": "img/icon.png",
+    "default_popup": "index.html"
+  }
+}
