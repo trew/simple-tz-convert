@@ -358,5 +358,6 @@ window.onload = function() {
   $('#convert_btn').click(function() { STZC.update(); });
   $('#swap24h').click(function() { STZC.swap24h(this); });
   $('#swapTimes').click(function() { STZC.swapTimes(); });
+  $('form').submit(function() { STZC.update(); });
 };
 
