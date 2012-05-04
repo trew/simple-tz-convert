@@ -54,8 +54,7 @@ var STZC = {};
     var to        = document.getElementById('time2');
     var from_tz   = document.getElementById('c1');
     var to_tz     = document.getElementById('c2');
-    var from_info = document.getElementById('time1i');
-    var to_info   = document.getElementById('time2i');
+    var info   = document.getElementById('timei');
     var from_offset = tz_delta_map[from_tz.value];
     var to_offset = tz_delta_map[to_tz.value];
 
@@ -67,24 +66,22 @@ var STZC = {};
     {
       var toDate = convertBase(from.value, from_tz.value, to_tz.value);
       if( (fromDate.getDay() === 0) && (toDate.getDay() === 6) ) {
-          to_info.innerHTML = 'previous day';
+          info.innerHTML = 'previous day';
       } else if((fromDate.getDay() === 6) && (toDate.getDay() === 0)) {
-          to_info.innerHTML = 'next day';
+          info.innerHTML = 'next day';
       } else if(toDate.getDay() < fromDate.getDay()) {
-          to_info.innerHTML = 'previous day';
+          info.innerHTML = 'previous day';
       } else if(toDate.getDay() > fromDate.getDay()) {
-          to_info.innerHTML = 'next day';
+          info.innerHTML = 'next day';
       } else {
-          to_info.innerHTML = '';
+          info.innerHTML = '';
       }
-      from_info.innerHTML = '';
       convertedDateString = toDate.toString(timeformat);
       from.value = fromDate.toString(timeformat);
       to.innerHTML = convertedDateString;
     }
     else {
-      from_info.innerHTML = '';
-      to_info.innerHTML = '';
+      info.innerHTML = '';
     }
   }
 
@@ -210,13 +207,15 @@ var STZC = {};
     $.each([arr1,arr2], function(s) { // iterate over two select lists
         $.each(this, function(i) {    // iterate over all timezones in list
             // add separator after 5 first in list
-            if (i==5) { 
+            if (i==5) {
               $('#c'+(s+1)).append($("<option />")
                            .attr('disabled','disabled')
                            .text("-------"));
             }
             // add option
-            $('#c'+(s+1)).append($("<option />").val(this).text(this));
+            $('#c'+(s+1)).append($("<option />")
+                         .val(this)
+                         .text(this));
         });
     });
   }
