@@ -34,7 +34,7 @@ select:hover {
   -webkit-box-shadow: 0px 0px 3px 0px #003333;
 }
 
-input#time1 {
+#time1 {
   font-size:             18px;
   text-align:            center;
   background-color:      #fcfcfc;
@@ -44,10 +44,10 @@ input#time1 {
   padding:               2px 2px;
   outline:               none;
 }
-input#time1:hover {
+#time1:hover {
   -webkit-box-shadow: 0px 0px 3px 0px #006ddd;
 }
-input#time1:focus {
+#time1:focus {
   border: 1px solid #363636;
 }
 
