@@ -180,22 +180,10 @@ var STZC = {};
   }
 
   function initTZDeltaMap() {
-    var tz_map = {};
-    var s;
-    if (localStorage.tz) {
-        tz_map = JSON.parse(localStorage.tz);
-        for(s in tz_map) {
-            if (tz_map.hasOwnProperty(s)) {
-                tz_delta_map[s] = tz_map[s];
-            }
+    for(var s in tz) {
+        if (tz.hasOwnProperty(s)) {
+            tz_delta_map[s] = tz[s];
         }
-    } else {
-        for(s in tz) {
-            if (tz.hasOwnProperty(s)) {
-                tz_delta_map[s] = tz[s];
-            }
-        }
-        localStorage.tz = JSON.stringify(tz_delta_map);
     }
   }
 
