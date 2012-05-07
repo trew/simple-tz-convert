@@ -343,9 +343,10 @@ var STZC = {};
 window.onload = function() {
   "use strict";
   STZC.init();
-  $('#convert_btn').click(function() { STZC.update(); });
   $('#swap24h').click(function() { STZC.swap24h(this); });
   $('#swapTimes').click(function() { STZC.swapTimes(); });
   $('form').submit(function() { STZC.update(); });
+  $('#c1').change(function() { STZC.update(); });
+  $('#c2').change(function() { STZC.update(); });
 };
 
