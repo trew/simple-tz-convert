@@ -11,8 +11,8 @@ var STZC = {};
   nextyear.setFullYear(nextyear.getFullYear( ) + 1);
   var tz_delta_map = {}; // mapping of context strings ("Chicago", "GMT+3") to offset in seconds
   var default_arr = [];
-  var timezone1 = []; // list of timezones for first select
-  var timezone2 = []; // list of timezones for the second select
+  var tzList1 = []; // list of timezones for first select
+  var tzList2 = []; // list of timezones for the second select
   var timeformat = 't';
 
   STZC.update = updateTimes;
@@ -22,7 +22,7 @@ var STZC = {};
   STZC.init = function() {
     initTZDeltaMap();
     createTZArrays();
-    populateSelects(timezone1, timezone2);
+    populateSelects(tzList1, tzList2);
     initTimeFormat();
 
     setFieldDefaults();
@@ -95,28 +95,28 @@ var STZC = {};
      * the select list and repopulate the arrays. There must be some
      * more efficiant method for this.
      */
-    timezone1 = timezone1.splice(0,4); // remove everything but the five first elements
+    tzList1 = tzList1.splice(0,4); // remove everything but the five first elements
     var selectedValue = $('#c1 :selected').val(); //get selected val
-    timezone1.filter(function(elem,idx,arr) {
+    tzList1.filter(function(elem,idx,arr) {
                         return elem === selectedValue
                      });  // remove selected value
-    timezone1.unshift(selectedValue); // add at beginning of list
-    timezone1 = timezone1.concat(default_arr).distinct();
+    tzList1.unshift(selectedValue); // add at beginning of list
+    tzList1 = tzList1.concat(default_arr).distinct();
 
-    timezone2 = timezone2.splice(0,4); // remove everything but the five first elements
+    tzList2 = tzList2.splice(0,4); // remove everything but the five first elements
     selectedValue = $('#c2 :selected').val(); //get selected val
-    timezone2.filter(function(elem,idx,arr) {
+    tzList2.filter(function(elem,idx,arr) {
                         return elem === selectedValue
                      });  // remove selected value
-    timezone2.unshift(selectedValue); // add at beginning of list
-    timezone2 = timezone2.concat(default_arr).distinct();
+    tzList2.unshift(selectedValue); // add at beginning of list
+    tzList2 = tzList2.concat(default_arr).distinct();
 
     // populate the select lists with the new arrays
-    populateSelects(timezone1, timezone2);
+    populateSelects(tzList1, tzList2);
 
     // store them in the localStorage
-    localStorage.tzarr1 = JSON.stringify(timezone1.slice(0,5));
-    localStorage.tzarr2 = JSON.stringify(timezone2.slice(0,5));
+    localStorage.tzarr1 = JSON.stringify(tzList1.slice(0,5));
+    localStorage.tzarr2 = JSON.stringify(tzList2.slice(0,5));
   }
 
   function swapTimes()
@@ -126,11 +126,11 @@ var STZC = {};
       document.getElementById('time1').value = time2;
 
       // swap select lists
-      var timezone_buffer = timezone2.slice(0);
-      timezone2 = timezone1;
-      timezone1 = timezone_buffer;
+      var tzListBuf = tzList2.slice(0);
+      tzList2 = tzList1;
+      tzList1 = tzListBuf;
 
-      populateSelects(timezone1, timezone2);
+      populateSelects(tzList1, tzList2);
       updateTimes();
   }
 
@@ -161,10 +161,10 @@ var STZC = {};
   function createTZArrays() {
     // Get the five latest used timezones from localStorage
     if (localStorage.tzarr1) {
-        timezone1 = JSON.parse(localStorage.tzarr1);
+        tzList1 = JSON.parse(localStorage.tzarr1);
     }
     if (localStorage.tzarr2) {
-        timezone2 = JSON.parse(localStorage.tzarr2);
+        tzList2 = JSON.parse(localStorage.tzarr2);
     }
 
     // Create an array of the rest of the timezones
@@ -175,8 +175,8 @@ var STZC = {};
     }
 
     // combine them
-    timezone1 = timezone1.concat(default_arr).distinct();
-    timezone2 = timezone2.concat(default_arr).distinct();
+    tzList1 = tzList1.concat(default_arr).distinct();
+    tzList2 = tzList2.concat(default_arr).distinct();
   }
 
   function initTZDeltaMap() {
