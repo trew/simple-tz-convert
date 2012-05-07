@@ -11,6 +11,9 @@ var STZC = {};
   nextyear.setFullYear(nextyear.getFullYear( ) + 1);
   var tz_delta_map = {}; // mapping of context strings ("Chicago", "GMT+3") to offset in seconds
   var allTZ = [];
+  var selectedTZ1 = "GMT";
+  var selectedTZ2 = "GMT";
+  var latestTZ = []; // list of latest used timezones
   var tzList1 = []; // list of timezones for first select
   var tzList2 = []; // list of timezones for the second select
   var timeformat = 't';
@@ -160,11 +163,14 @@ var STZC = {};
 
   function createTZArrays() {
     // Get the five latest used timezones from localStorage
-    if (localStorage.tzarr1) {
-        tzList1 = JSON.parse(localStorage.tzarr1);
+    if (localStorage.latestTZ) {
+      latestTZ = JSON.parse(localStorage.latestTZ);
     }
-    if (localStorage.tzarr2) {
-        tzList2 = JSON.parse(localStorage.tzarr2);
+    if (localStorage.selectedTZ1) {
+      selectedTZ1 = localStorage.selectedTZ1;
+    }
+    if (localStorage.selectedTZ2) {
+      selectedTZ2 = localStorage.selectedTZ2;
     }
 
     // Create an array of the rest of the timezones
