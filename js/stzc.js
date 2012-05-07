@@ -10,7 +10,7 @@ var STZC = {};
   var nextyear = new Date( );
   nextyear.setFullYear(nextyear.getFullYear( ) + 1);
   var tz_delta_map = {}; // mapping of context strings ("Chicago", "GMT+3") to offset in seconds
-  var default_arr = [];
+  var allTZ = [];
   var tzList1 = []; // list of timezones for first select
   var tzList2 = []; // list of timezones for the second select
   var timeformat = 't';
@@ -101,7 +101,7 @@ var STZC = {};
                         return elem === selectedValue
                      });  // remove selected value
     tzList1.unshift(selectedValue); // add at beginning of list
-    tzList1 = tzList1.concat(default_arr).distinct();
+    tzList1 = tzList1.concat(allTZ).distinct();
 
     tzList2 = tzList2.splice(0,4); // remove everything but the five first elements
     selectedValue = $('#c2 :selected').val(); //get selected val
@@ -109,7 +109,7 @@ var STZC = {};
                         return elem === selectedValue
                      });  // remove selected value
     tzList2.unshift(selectedValue); // add at beginning of list
-    tzList2 = tzList2.concat(default_arr).distinct();
+    tzList2 = tzList2.concat(allTZ).distinct();
 
     // populate the select lists with the new arrays
     populateSelects(tzList1, tzList2);
@@ -170,13 +170,13 @@ var STZC = {};
     // Create an array of the rest of the timezones
     for(var s in tz_delta_map)  {
         if (tz_delta_map.hasOwnProperty(s)) {
-            default_arr.push(s);
+            allTZ.push(s);
         }
     }
 
     // combine them
-    tzList1 = tzList1.concat(default_arr).distinct();
-    tzList2 = tzList2.concat(default_arr).distinct();
+    tzList1 = tzList1.concat(allTZ).distinct();
+    tzList2 = tzList2.concat(allTZ).distinct();
   }
 
   function initTZDeltaMap() {
