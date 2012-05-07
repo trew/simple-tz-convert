@@ -37,23 +37,23 @@ var tz =      {
                "WDT    (GMT+9)":32400,
                "GMT+10"        :36000,
                "GMT+11"        :39600,
-               "GMT+12"        :43200,
+               "GMT+12"        :43200
 };
 
 var tznames = {
-               "PST " : "Pacific Standard Time",
-               "PDT " : "Pacific Daylight Time",
-               "EST " : "Eastern Standard Time",
-               "WET " : "Western European Time",
-               "BST " : "British Summer Time",
-               "CET " : "Central European Time",
+               "PST" : "Pacific Standard Time",
+               "PDT" : "Pacific Daylight Time",
+               "EST" : "Eastern Standard Time",
+               "WET" : "Western European Time",
+               "BST" : "British Summer Time",
+               "CET" : "Central European Time",
                "WEST" : "Western European Summer Time",
                "CEST" : "Central European Summer Time",
-               "EET " : "Eastern European Time",
+               "EET" : "Eastern European Time",
                "EEST" : "Eastern European Summer Time",
                "HKT"  : "Hong Kong Time",
-               "WST " : "Western Standard Time"
-               "KST " : "Korea Standard Time",
-               "WDT " : "Western Daylight Time",
+               "WST" : "Western Standard Time",
+               "KST" : "Korea Standard Time",
+               "WDT" : "Western Daylight Time"
 };
 
