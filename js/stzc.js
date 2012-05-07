@@ -162,7 +162,7 @@ var STZC = {};
   }
 
   function createTZArrays() {
-    // Get the five latest used timezones from localStorage
+    // Get the latest used timezones from localStorage
     if (localStorage.latestTZ) {
       latestTZ = JSON.parse(localStorage.latestTZ);
     }
@@ -180,9 +180,9 @@ var STZC = {};
         }
     }
 
-    // combine them
-    tzList1 = tzList1.concat(allTZ).distinct();
-    tzList2 = tzList2.concat(allTZ).distinct();
+    // combine them and add selected TZ to front.
+    tzList1 = [selectedTZ1].concat(latestTZ).concat(allTZ).distinct();
+    tzList2 = [selectedTZ2].concat(latestTZ).concat(allTZ).distinct();
   }
 
   function initTZDeltaMap() {
