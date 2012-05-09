@@ -1,6 +1,6 @@
 body {
   background-color: #efefef;
-  font-family:      Arial;
+  font-family:      Helvetica, Verdana, Arial;
   margin:           5px;
   padding:          0px;
 }
@@ -80,7 +80,7 @@ td {
 }
 
 .info {
-  font-family: Arial;
+  font-family: Helvetica, Verdana, Arial;
   font-size:   11px;
   color:       #bb5555;
   margin:      0px;
