@@ -22,7 +22,8 @@ select:hover {
 }
 
 .btn {
-  padding:               3px 6px;
+  float:   right;
+  padding: 3px 6px;
 }
 .btn:hover {
   -webkit-box-shadow: 0px 0px 3px 0px #003333;
@@ -58,10 +59,6 @@ select:hover {
   width:                 100px;
   padding:               2px 2px;
   white-space:           nowrap;
-}
-
-#swap24h {
-  float: right;
 }
 
 a {

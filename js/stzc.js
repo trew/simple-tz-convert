@@ -22,6 +22,7 @@ var STZC = {};
   STZC.update = updateTimes;
   STZC.swap24h = swap24h;
   STZC.swapTimes = swapTimes;
+  STZC.now = setNow;
   STZC.validTimeParse = validTimeParse;
   STZC.init = function() {
     initTZDeltaMap();
@@ -196,6 +197,12 @@ var STZC = {};
     if(to_date) {
       to.innerHTML = to_date.toString(timeformat);
     }
+  }
+
+  function setNow() {
+    var current_time = Date.parse('<!--#echo var="DATE_GMT" -->') || new Date();
+    $('#time1').val(current_time.toString(timeformat));
+    convert();
   }
 
   function createTZArrays() {
@@ -397,6 +404,7 @@ window.onload = function() {
   STZC.init();
   $('#swap24h').click(function() { STZC.swap24h(this); });
   $('#swapTimes').click(function() { STZC.swapTimes(); });
+  $('#now').click(function() { STZC.now(); });
   $('form').submit(function() { STZC.update(); });
   $('#c1').change(function() { STZC.update("c1"); });
   $('#c2').change(function() { STZC.update("c2"); });
