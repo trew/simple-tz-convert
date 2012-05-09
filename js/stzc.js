@@ -13,7 +13,8 @@ var STZC = {};
   var allTZ = [];
   var selectedTZ1 = "GMT";
   var selectedTZ2 = "GMT";
-  var latestTZ = []; // list of latest used timezones
+  var latestTZ = ['GMT']; // list of latest used timezones
+  var latestTZMax = 10;
   var tzList1 = []; // list of timezones for first select
   var tzList2 = []; // list of timezones for the second select
   var timeformat = 't';
@@ -88,38 +89,69 @@ var STZC = {};
     }
   }
 
-  function updateTimes() {
+  // Context is the timezone list from which we selected a timezone. Undefined if we
+  // arrived here from elsewhere.
+  function updateTimes(context) {
     localStorage.time = $('#time1').val();
 
     convert(); //convert the times
 
-    /* TODO:
-     * This is slow. I feel there is no need to completely erase
-     * the select list and repopulate the arrays. There must be some
-     * more efficiant method for this.
-     */
-    tzList1 = tzList1.splice(0,4); // remove everything but the five first elements
-    var selectedValue = $('#c1 :selected').val(); //get selected val
-    tzList1.filter(function(elem,idx,arr) {
-                        return elem === selectedValue
-                     });  // remove selected value
-    tzList1.unshift(selectedValue); // add at beginning of list
-    tzList1 = tzList1.concat(allTZ).distinct();
 
-    tzList2 = tzList2.splice(0,4); // remove everything but the five first elements
-    selectedValue = $('#c2 :selected').val(); //get selected val
-    tzList2.filter(function(elem,idx,arr) {
-                        return elem === selectedValue
-                     });  // remove selected value
-    tzList2.unshift(selectedValue); // add at beginning of list
-    tzList2 = tzList2.concat(allTZ).distinct();
+    //Did we arrive here from a timezone change?
+    if (typeof context !== 'undefined') {
 
-    // populate the select lists with the new arrays
-    populateSelects(tzList1, tzList2);
+      var chosenValue = $('#'+context+' :selected').val();
 
-    // store them in the localStorage
-    localStorage.tzarr1 = JSON.stringify(tzList1.slice(0,5));
-    localStorage.tzarr2 = JSON.stringify(tzList2.slice(0,5));
+      if (context === "c1") {
+        if (chosenValue === selectedTZ1) { return; }
+
+        if (chosenValue === selectedTZ2) {
+          latestTZ.removeAll(chosenValue);
+        } else {
+          if (latestTZ.contains(chosenValue)) {
+            latestTZ.removeAll(chosenValue);
+          } else if (latestTZ.length >= latestTZMax) {
+            latestTZ.pop();
+          }
+        }
+        latestTZ.unshift(chosenValue);
+        selectedTZ1 = chosenValue;
+        localStorage.selectedTZ1 = chosenValue;
+        if (selectedTZ1 !== selectedTZ2 &&
+                  latestTZ.length > 2 &&
+                  latestTZ[1] != selectedTZ2) {
+            var buf = latestTZ.splice(1,1)[0];
+            latestTZ.splice(2,0,buf);
+        }
+      } else if (context === "c2") {
+        if (chosenValue === selectedTZ2) { return; }
+
+        if (chosenValue === selectedTZ1) {
+          latestTZ.removeAll(chosenValue);
+        } else {
+          if (latestTZ.contains(chosenValue)) {
+            latestTZ.removeAll(chosenValue);
+          } else if (latestTZ.length >= latestTZMax) {
+            latestTZ.pop();
+          }
+        }
+        latestTZ.unshift(chosenValue);
+        selectedTZ2 = chosenValue;
+        localStorage.selectedTZ2 = chosenValue;
+        if (selectedTZ1 !== selectedTZ2 &&
+                  latestTZ.length > 2 &&
+                  latestTZ[1] != selectedTZ1) {
+            var buf = latestTZ.splice(1,1)[0];
+            latestTZ.splice(2,0,buf);
+        }
+      }
+
+      tzList1 = [selectedTZ1].concat(latestTZ).distinct().concat(allTZ).distinct();
+      tzList2 = [selectedTZ2].concat(latestTZ).distinct().concat(allTZ).distinct();
+
+      populateSelects(tzList1, tzList2);
+      localStorage.latestTZ = JSON.stringify(latestTZ);
+    }
   }
 
   function swapTimes()
@@ -181,8 +213,8 @@ var STZC = {};
     }
 
     // combine them and add selected TZ to front.
-    tzList1 = [selectedTZ1].concat(latestTZ).concat(allTZ).distinct();
-    tzList2 = [selectedTZ2].concat(latestTZ).concat(allTZ).distinct();
+    tzList1 = latestTZ.concat(allTZ).distinct();
+    tzList2 = latestTZ.concat(allTZ).distinct();
   }
 
   function initTZDeltaMap() {
@@ -200,8 +232,8 @@ var STZC = {};
 
     $.each([arr1,arr2], function(s) { // iterate over two select lists
         $.each(this, function(i) {    // iterate over all timezones in list
-            // add separator after 5 first in list
-            if (i==5) {
+            // add separator after the latestTZ items
+            if (i==latestTZ.length) {
               $('#c'+(s+1)).append($("<option />")
                            .attr('disabled','disabled')
                            .text("-------"));
@@ -324,6 +356,15 @@ var STZC = {};
     }
     return res;
   };
+  Array.prototype.removeAll = function(obj) {
+    if (this == null) {
+      throw new TypeError();
+    }
+    var t = Object(this);
+    return t.filter(function(elem,idx,arr) {
+      return elem === obj;
+    });
+  };
   Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
@@ -352,7 +393,7 @@ window.onload = function() {
   $('#swap24h').click(function() { STZC.swap24h(this); });
   $('#swapTimes').click(function() { STZC.swapTimes(); });
   $('form').submit(function() { STZC.update(); });
-  $('#c1').change(function() { STZC.update(); });
-  $('#c2').change(function() { STZC.update(); });
+  $('#c1').change(function() { STZC.update("c1"); });
+  $('#c2').change(function() { STZC.update("c2"); });
 };
 
