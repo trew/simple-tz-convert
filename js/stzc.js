@@ -164,6 +164,11 @@ var STZC = {};
       var tzListBuf = tzList2.slice(0);
       tzList2 = tzList1;
       tzList1 = tzListBuf;
+      var selBuf = selectedTZ2;
+      selectedTZ2 = selectedTZ1;
+      selectedTZ1 = selBuf;
+      localStorage.selectedTZ1 = selectedTZ1;
+      localStorage.selectedTZ2 = selectedTZ2;
 
       populateSelects(tzList1, tzList2);
       updateTimes();
@@ -213,8 +218,8 @@ var STZC = {};
     }
 
     // combine them and add selected TZ to front.
-    tzList1 = latestTZ.concat(allTZ).distinct();
-    tzList2 = latestTZ.concat(allTZ).distinct();
+      tzList1 = [selectedTZ1].concat(latestTZ).distinct().concat(allTZ).distinct();
+      tzList2 = [selectedTZ2].concat(latestTZ).distinct().concat(allTZ).distinct();
   }
 
   function initTZDeltaMap() {
