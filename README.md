@@ -24,7 +24,7 @@ between timezones.
 
 If you found a bug, or a have a brilliant idea about how to make STZC better, please
 report it by simply creating a [Github Issue](https://github.com/trew/simple-tz-convert/issues/new)
-and describe your problem or suggestion.
+or e-mailing me at <imtrew@gmail.com> and describe your problem or suggestion.
 
 --------------------
 ### Contributing ###
