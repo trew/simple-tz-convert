@@ -1,6 +1,6 @@
 {
   "name": "Simple Timezone Converter",
-  "version": "1.0",
+  "version": "0.1",
   "manifest_version": 2,
   "description": "Easily convert times between timezones.",
   "icons": { "16": "img/16.png",
