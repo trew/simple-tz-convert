@@ -1,23 +1,30 @@
 Simple Timezone Converter
 =========================
 
-STZC is a Google Chrome extension that allows for quick and easy convertions
+STZC is a Google Chrome and Safari extension that allows for quick and easy convertions
 between timezones.
 
-![Yeah, this is what it looks like.](https://github.com/trew/simple-tz-convert/raw/master/img/stzc-screenshot.png)
+![Yeah, this is what it looks like in Chrome.](https://github.com/trew/simple-tz-convert/raw/master/img/stzc-chrome-screenshot.png)
 
+![Yeah, this is what it looks like in Safari.](https://github.com/trew/simple-tz-convert/raw/master/img/stzc-safari-screenshot.png)
 
-### Installing (using the packed file) ###
+### Installing in Google Chrome (using the packed file) ###
 
  * Download and open [this file](https://github.com/downloads/trew/simple-tz-convert/simple-tz-convert.crx)
    in Google Chrome.
+
+### Installing in Safari (using the packed file) ###
+
+ * Download and open [this file](https://github.com/downloads/aenglund/simple-tz-convert/simple-tz-convert.safariextz)
+   in Safari.
 
 ### Installing (using the unpacked source files) ###
 
  * Either download the zip file of this repository or clone it using git.
  * Unpack the zip file somewhere.
- * In Google Chrome, go to <b>Settings->Extensions</b> and click <b>Load unpacked extension...</b>
- * Select the root directory of your source files.
+ * In browser:
+    * Google Chrome, go to <b>Settings->Extensions</b> and click <b>Load unpacked extension...</b>. Select the root directory of your source files.
+    * Safari, go to <b>Develop->Show Extension Builder</b> click the '+'-sign and <b>Add extension</b>. Locate the folder and click <b>Select</b>. Note. You may need to change the name of the folder so that it ends with .safariextension. E.g. simple-tz-convert.safariextension
 
 -------------------------------------
 ### Reporting bugs or suggestions ###
