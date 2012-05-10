@@ -4,9 +4,9 @@ Simple Timezone Converter
 STZC is a Google Chrome and Safari extension that allows for quick and easy convertions
 between timezones.
 
-![Yeah, this is what it looks like in Chrome.](https://github.com/trew/simple-tz-convert/raw/master/img/stzc-chrome-screenshot.png)
+![Yeah, this is what it looks like in Chrome.](https://github.com/aenglund/simple-tz-convert/raw/master/img/stzc-chrome-screenshot.png)
 
-![Yeah, this is what it looks like in Safari.](https://github.com/trew/simple-tz-convert/raw/master/img/stzc-safari-screenshot.png)
+![Yeah, this is what it looks like in Safari.](https://github.com/aenglund/simple-tz-convert/raw/master/img/stzc-safari-screenshot.png)
 
 ### Installing in Google Chrome (using the packed file) ###
 
