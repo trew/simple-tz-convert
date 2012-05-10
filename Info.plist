@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Trew</string>
+	<key>Builder Version</key>
+	<string>7534.55.3</string>
+	<key>CFBundleDisplayName</key>
+	<string>simple-tz-convert</string>
+	<key>CFBundleIdentifier</key>
+	<string>se.not-a-company--jet.simple-tz-convert</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.2</string>
+	<key>CFBundleVersion</key>
+	<string>2</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>index.html</string>
+				<key>Height</key>
+				<real>140</real>
+				<key>Identifier</key>
+				<string>STZC</string>
+				<key>Width</key>
+				<real>240</real>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>STZC</string>
+				<key>Image</key>
+				<string>img/16.png</string>
+				<key>Label</key>
+				<string>STZC</string>
+				<key>Palette Label</key>
+				<string>Simple Time Zone Converter</string>
+				<key>Popover</key>
+				<string>STZC</string>
+				<key>Tool Tip</key>
+				<string>Time Zone Converter</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict/>
+	</dict>
+	<key>Description</key>
+	<string>STZC is an extension that allows for quick and easy convertions between timezones.</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict/>
+	</dict>
+	<key>Website</key>
+	<string>https://github.com/trew/simple-tz-convert</string>
+</dict>
+</plist>
