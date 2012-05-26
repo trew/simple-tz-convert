@@ -1,7 +1,9 @@
 var tz =      {
                "BST    (GMT+1)":3600,
+               "CDT    (GMT-5)":-18000,
                "CEST   (GMT+2)":7200,
                "CET    (GMT+1)":3600,
+               "CST    (GMT-6)":-21600,
                "EDT    (GMT-4)":-14400,
                "EEST   (GMT+3)":10800,
                "EET    (GMT+2)":7200,
@@ -43,8 +45,10 @@ var tz =      {
 
 var tznames = {
                "BST" : "British Summer Time",
+               "CDT" : "Central Daylight Time",
                "CET" : "Central European Time",
                "CEST" : "Central European Summer Time",
+               "CST" : "Central Standard Time",
                "EDT" : "Eastern Daylight Time",
                "EET" : "Eastern European Time",
                "EEST" : "Eastern European Summer Time",
