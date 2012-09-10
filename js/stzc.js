@@ -11,9 +11,9 @@ var STZC = {};
   nextyear.setFullYear(nextyear.getFullYear( ) + 1);
   var tz_delta_map = {}; // mapping of context strings ("Chicago", "GMT+3") to offset in seconds
   var allTZ = [];
-  var selectedTZ1 = "GMT";
-  var selectedTZ2 = "GMT";
-  var latestTZ = ['GMT']; // list of latest used timezones
+  var selectedTZ1 = "GMT      (UTC)";
+  var selectedTZ2 = "GMT      (UTC)";
+  var latestTZ = ['GMT      (UTC)']; // list of latest used timezones
   var latestTZMax = 10;
   var tzList1 = []; // list of timezones for first select
   var tzList2 = []; // list of timezones for the second select
