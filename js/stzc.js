@@ -39,9 +39,9 @@ var STZC = {};
 
     // retrieve time from local storage
     if(localStorage.time) {
-      $('#time1').val(localStorage.time);
+      $('#time1-value').val(localStorage.time);
     } else {
-      $('#time1').val(current_time.toString(timeformat));
+      $('#time1-value').val(current_time.toString(timeformat));
     }
     // convert the value to populate the second time
     convert();
@@ -55,8 +55,8 @@ var STZC = {};
 
 
   function convert() {
-    var from      = document.getElementById('time1');
-    var to        = document.getElementById('time2');
+    var from      = document.getElementById('time1-value');
+    var to        = document.getElementById('time2-value');
     var from_tz   = document.getElementById('c1');
     var to_tz     = document.getElementById('c2');
     var info   = document.getElementById('timei');
@@ -93,7 +93,7 @@ var STZC = {};
   // Context is the timezone list from which we selected a timezone. Undefined if we
   // arrived here from elsewhere.
   function updateTimes(context) {
-    localStorage.time = $('#time1').val();
+    localStorage.time = $('#time1-value').val();
 
     convert(); //convert the times
 
@@ -158,8 +158,8 @@ var STZC = {};
   function swapTimes()
   {
       // move time2 to time1.
-      var time2 = document.getElementById('time2').innerHTML;
-      document.getElementById('time1').value = time2;
+      var time2 = document.getElementById('time2-value').innerHTML;
+      document.getElementById('time1-value').value = time2;
 
       // swap select lists
       var tzListBuf = tzList2.slice(0);
@@ -187,8 +187,8 @@ var STZC = {};
       localStorage.timeformat = '12h';
     }
 
-    var from = document.getElementById('time1');
-    var to   = document.getElementById('time2');
+    var from = document.getElementById('time1-value');
+    var to   = document.getElementById('time2-value');
     var from_date = validTimeParse(from.value);
     var to_date   = validTimeParse(to.innerHTML);
     if(from_date) {
@@ -201,7 +201,7 @@ var STZC = {};
 
   function setNow() {
     var current_time = Date.parse('<!--#echo var="DATE_GMT" -->') || new Date();
-    $('#time1').val(current_time.toString(timeformat));
+    $('#time1-value').val(current_time.toString(timeformat));
     convert();
   }
 

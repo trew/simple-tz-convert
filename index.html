@@ -15,58 +15,39 @@
   </script>
 </head>
 <body>
-  <form>
-  <table>
-    <tr>
-      <td colspan="3">
-        Convert
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input class="input" id="time1" type="text" autofocus />
-      </td>
-      <td>
-        <select class="widget" id="c1"></select>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        To
-      </td>
-      <td >
-        <a id="swapTimes"><img src="img/swap.png" /></a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div id="time2">
-        </div>
-      </td>
-      <td>
-        <select class="widget" id="c2"></select>
-      </td>
-    </tr>
-    <tr>
-      <td class="info" id="timei">
-      </td>
-      <td rowspan="2">
-        <input class="widget btn" type="button" id="swap24h" value="24h">
-        <input class="widget btn" type="button" id="now" value="Now">
-      </td>
-    </tr>
-    <tr>
-      <td>
-      </td>
-    </tr>
-  </table>
+<form>
+<div id="top-bar">Convert</div>
+<div id="container">
+  <div id="time1">
+    <input class="input" id="time1-value" type="text" autofocus />
+    <select class="widget" id="c1"></select>
+  </div>
+  
+  <div id="mid">
+    <div id="to">To</div>
+    <div id="swap"><a id="swapTimes"><img src="img/swap.png" /></a></div>
+  </div>
+  
+  <div id="time2">
+    <div id="time2-value"></div>
+    <select class="widget" id="c2"></select>
+  </div>
+</div>
+
+<div id="bottom-bar">
+  <div class="info" id="timei"></div>
+  <div id="buttons">
+    <input class="widget btn" type="button" id="swap24h" value="24h">
+    <input class="widget btn" type="button" id="now" value="Now">
+  </div>
+</div>
 </form>
 
-  <script src="js/tznames.js" type="text/javascript"></script>
-  <script src="js/shorttimes.js" type="text/javascript"></script>
-  <script src="js/date.js" type="text/javascript"></script>
-  <script src="js/stzc.js" type="text/javascript"></script>
-  <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+<script src="js/tznames.js" type="text/javascript"></script>
+<script src="js/shorttimes.js" type="text/javascript"></script>
+<script src="js/date.js" type="text/javascript"></script>
+<script src="js/stzc.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
 </body>
 </html>
 
